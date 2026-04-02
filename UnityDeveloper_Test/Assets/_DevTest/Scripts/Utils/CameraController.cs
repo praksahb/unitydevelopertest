@@ -1,4 +1,4 @@
-using DevTest.Player.Service;
+using DevTest.Service;
 using UnityEngine;
 
 namespace DevTest
@@ -19,9 +19,6 @@ namespace DevTest
             }
             if (_target == null) return;
 
-
-            // Without Rotation
-
             // 1. Calculate the target position with pure World offset
             Vector3 targetPosition = _target.position + _offset;
             
@@ -30,19 +27,6 @@ namespace DevTest
 
             // 3. Point the camera at the player
             transform.LookAt(_target.position + _lookAtOffset);
-
-
-            // With Rotation 
-
-            //// 1. Calculate the target position relative to the player's rotation
-            //Vector3 desiredPosition = _target.position + (_target.rotation * _offset);
-
-            //// 2. Smoothly move the camera to that position
-            //transform.position = Vector3.Lerp(transform.position, desiredPosition, _smoothSpeed * Time.deltaTime);
-
-            //// 3. Point the camera at a spot above the player's pivot (e.g., their head)
-            //Vector3 lookTarget = _target.position + (_target.rotation * _lookAtOffset);
-            //transform.LookAt(lookTarget, _target.up);
         }
     }
 }

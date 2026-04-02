@@ -1,6 +1,7 @@
+using DevTest.Player;
 using UnityEngine;
 
-namespace DevTest.Player.Service
+namespace DevTest.Service
 {
     public class PlayerService : GenericSingleton<PlayerService>
     {
@@ -9,15 +10,9 @@ namespace DevTest.Player.Service
 
         private PlayerController _playerController;
 
-
-
         protected override void Awake()
         {
             base.Awake();
-        }
-
-        private void Start()
-        {
             InitializePlayer();
         }
 

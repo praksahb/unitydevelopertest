@@ -1,7 +1,7 @@
-using DevTest.Player.Service;
+using DevTest.Service;
 using UnityEngine;
 
-namespace DevTest
+namespace DevTest.Player
 {
     public class PlayerModel
     {

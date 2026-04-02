@@ -1,12 +1,12 @@
 using UnityEngine;
-using DevTest.Player.Service;
+using DevTest.Gravity;
+using DevTest.Service;
 
-namespace DevTest.Gravity
+namespace DevTest.Service
 {
     public class GravityService : GenericSingleton<GravityService>
     {
         [SerializeField] private Transform _environment;
-        [SerializeField] private Vector3 _hologramOffset = new Vector3(0, 1.5f, 0);
 
         private GravityController _gravityController;
         private GravityModel _gravityModel;
@@ -15,7 +15,7 @@ namespace DevTest.Gravity
         {
             base.Awake();
             _gravityModel = new GravityModel();
-            _gravityController = new GravityController(_gravityModel, _environment, _hologramOffset);
+            _gravityController = new GravityController(_gravityModel, _environment);
         }
 
         private void Update()

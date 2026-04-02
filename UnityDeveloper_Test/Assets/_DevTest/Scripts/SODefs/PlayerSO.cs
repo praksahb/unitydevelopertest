@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DevTest.Player.Service
+namespace DevTest.Player
 {
     [CreateAssetMenu(fileName = "PlayerStats", menuName = "ScriptableObjects/PlayerStats")]
     public class PlayerSO : ScriptableObject

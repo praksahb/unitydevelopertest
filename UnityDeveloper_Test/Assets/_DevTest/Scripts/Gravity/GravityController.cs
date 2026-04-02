@@ -7,13 +7,11 @@ namespace DevTest.Gravity
     {
         private GravityModel _model;
         private Transform _environment;
-        private Vector3 _hologramOffset;
 
-        public GravityController(GravityModel model, Transform environment, Vector3 hologramOffset)
+        public GravityController(GravityModel model, Transform environment)
         {
             _model = model;
             _environment = environment;
-            _hologramOffset = hologramOffset;
         }
 
         public void HandleInput(PlayerView playerView)
@@ -56,8 +54,8 @@ namespace DevTest.Gravity
 
             if (_model.IsSelecting)
             {
-                // 1. Lock to head level (configurable in inspector)
-                playerView.Hologram.transform.position = playerView.transform.position + _hologramOffset;
+                // 1. Lock to player position (Simplistic version)
+                playerView.Hologram.transform.position = playerView.transform.position;
 
                 // 2. Simple Rotation Logic
                 Vector3 targetUp = Vector3.up; 
