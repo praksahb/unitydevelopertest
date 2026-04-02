@@ -4,8 +4,6 @@ namespace DevTest.Player
 {
     public class IdleState : IBaseState
     {
-        private PlayerStateManager manager;
-
         public IdleState()
         {
         }

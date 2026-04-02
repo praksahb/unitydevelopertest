@@ -4,8 +4,6 @@ namespace DevTest.Player
 {
     public class RunningState : IBaseState
     {
-        private PlayerStateManager manager;
-
         public RunningState()
         {
         }

@@ -4,10 +4,12 @@ namespace DevTest.Player.Service
 {
     public class PlayerService : GenericSingleton<PlayerService>
     {
-        [SerializeField] private PlayerSO playerStats;
-        [SerializeField] private Transform spawnPoint;
+        [SerializeField] private PlayerSO _playerStats;
+        [SerializeField] private Transform _spawnPoint;
 
-        private PlayerController playerController;
+        private PlayerController _playerController;
+
+
 
         protected override void Awake()
         {
@@ -21,20 +23,22 @@ namespace DevTest.Player.Service
 
         private void InitializePlayer()
         {
-            PlayerModel model = new PlayerModel(playerStats);
+            PlayerModel model = new PlayerModel(_playerStats);
             
-            playerController = new PlayerController(model, playerStats.PlayerPrefab, spawnPoint);
+            _playerController = new PlayerController(model, _playerStats.PlayerPrefab, _spawnPoint);
         }
 
 
         private void Update()
         {
-            playerController?.HandleUpdate();
+            _playerController?.HandleUpdate();
         }
 
         private void FixedUpdate()
         {
-            playerController?.HandleFixedUpdate();
+            _playerController?.HandleFixedUpdate();
         }
+
+        public Transform GetPlayerTransform() => _playerController.PlayerView.transform;
     }
 }

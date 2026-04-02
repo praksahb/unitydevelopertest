@@ -18,7 +18,7 @@ namespace DevTest.Player
         private readonly int RUNNING = Animator.StringToHash("Running");
         private readonly int IN_AIR = Animator.StringToHash("Falling_Idle");
 
-        private PlayerAnimationState? _currentAnimationState;
+        private PlayerAnimationState _currentAnimationState;
 
         public void PlayAnimation(PlayerAnimationState state)
         {
