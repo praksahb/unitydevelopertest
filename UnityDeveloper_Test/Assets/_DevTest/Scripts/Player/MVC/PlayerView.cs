@@ -16,6 +16,9 @@ namespace DevTest.Player
         private Rigidbody _rb;
         public Rigidbody Rigidbody => _rb;
 
+        [SerializeField] private GameObject _hologram;
+        public GameObject Hologram => _hologram;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();

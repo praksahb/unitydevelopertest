@@ -34,9 +34,16 @@ namespace DevTest.Player
 
         public void HandleUpdate()
         {
-            // Cache Input
-            HorizontalInput = Input.GetAxis("Horizontal");
-            VerticalInput = Input.GetAxis("Vertical");
+            // Decouple Arrow Keys from movement by explicitly polling WASD
+            float h = 0f;
+            if (Input.GetKey(KeyCode.A)) h -= 1f;
+            if (Input.GetKey(KeyCode.D)) h += 1f;
+            HorizontalInput = h;
+
+            float v = 0f;
+            if (Input.GetKey(KeyCode.S)) v -= 1f;
+            if (Input.GetKey(KeyCode.W)) v += 1f;
+            VerticalInput = v;
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -52,13 +59,7 @@ namespace DevTest.Player
             // Fixed update logic is now handled by the PlayerStateManager component itself
             JumpRequested = false;
 
-            // same for FixedUpdate
             StateManager.FixedUpdate();
         }
-
-        // The View's Update calls HandleUpdate, but who calls HandleFixedUpdate now?
-        // Let's re-add FixedUpdate to the View or just have the Controller called by the View.
-        // Actually, the PlayerStateManager handles the CurrentState's FixedUpdate!
-        // We just need to clear the input.
     }
 }
