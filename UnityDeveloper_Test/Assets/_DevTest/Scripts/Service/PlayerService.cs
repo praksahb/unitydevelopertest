@@ -23,8 +23,18 @@ namespace DevTest.Player.Service
         {
             PlayerModel model = new PlayerModel(playerStats);
             
-            
             playerController = new PlayerController(model, playerStats.PlayerPrefab, spawnPoint);
+        }
+
+
+        private void Update()
+        {
+            playerController?.HandleUpdate();
+        }
+
+        private void FixedUpdate()
+        {
+            playerController?.HandleFixedUpdate();
         }
     }
 }
