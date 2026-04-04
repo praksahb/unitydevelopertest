@@ -2074,9 +2074,10 @@ MonoBehaviour:
   - {fileID: 1492859683}
   _ballSpeed: 20
   _swingForce: 50
-  _spinForce: 1
+  _spinForce: 0.5
   _isSwingMode: 1
   _deliverySide: -1
+  _maxMissOffset: 1.5
 --- !u!1 &1031253637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,11 +3574,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bowlingManager: {fileID: 942184286}
   _meterUI: {fileID: 207677841}
-  swingButton: {fileID: 1796051877}
-  spinButton: {fileID: 1341866528}
-  bowlButton: {fileID: 1513985881}
-  spawnButton: {fileID: 98069949}
-  resetButton: {fileID: 1895415856}
+  _swingButton: {fileID: 1796051877}
+  _spinButton: {fileID: 1341866528}
+  _bowlButton: {fileID: 1513985881}
+  _spawnButton: {fileID: 98069949}
+  _resetButton: {fileID: 1895415856}
   _activeColor: {r: 0, g: 1, b: 0, a: 1}
   _inactiveColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1796051875
@@ -4124,8 +4125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5089b25d2acb4db44b756837cdd53a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  allowedBounds: {fileID: 465064810}
+  _moveSpeed: 10
+  _allowedBounds: {fileID: 465064810}
 --- !u!1 &2074770408
 GameObject:
   m_ObjectHideFlags: 0

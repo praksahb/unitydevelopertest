@@ -19,12 +19,14 @@ namespace CricketSimulation
         [SerializeField] private float _ballSpeed = 25f;
         [Range(0f, 100f)]
         [SerializeField] private float _swingForce = 50f;
-        [Range(0f, 5f)]
+        [Range(0f, 1f)]
         [SerializeField] private float _spinForce = 0.2f;
 
         [Header("Delivery Settings")]
         [SerializeField] private bool _isSwingMode = true; 
         [SerializeField] private DeliverySide _deliverySide = DeliverySide.LegSide;
+
+        // not being used presently. can be used to add in-accuracy to bounce marker
         [SerializeField] private float _maxMissOffset = 1.5f;
 
         public bool IsSwingMode => _isSwingMode;
