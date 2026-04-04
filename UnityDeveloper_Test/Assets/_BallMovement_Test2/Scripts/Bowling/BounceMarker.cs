@@ -8,45 +8,37 @@ namespace CricketSimulation
     public class BounceMarker : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] private float moveSpeed = 10f;
+        [SerializeField] private float _moveSpeed = 10f;
         
         [Header("Constraints")]
-        [Tooltip("Assign a BoxCollider representing the valid bounce area (top half of the pitch).")]
-        [SerializeField] private BoxCollider allowedBounds;
+        [Tooltip("Assign a BoxCollider representing the valid bounce area.")]
+        [SerializeField] private BoxCollider _allowedBounds;
 
-        private Vector3 startPosition;
+        private Vector3 _startPosition;
 
         private void Awake()
         {
-            startPosition = transform.position;
-        }
-
-        private void Start()
-        {
-            if (allowedBounds == null)
-            {
-                Debug.LogWarning("BounceMarker: No allowedBounds collider assigned! Marker will be free-roaming.");
-            }
+            _startPosition = transform.position;
         }
 
         public void HandleInput()
         {
-            float h = Input.GetAxisRaw("Horizontal"); // A/D
-            float v = Input.GetAxisRaw("Vertical");   // W/S
+            // Standardizing to W/A/S/D mapping from Input Manager
+            float h = Input.GetAxisRaw("Horizontal"); 
+            float v = Input.GetAxisRaw("Vertical");   
 
             if (h == 0 && v == 0) return;
 
-            Vector3 movement = new Vector3(h, 0, v) * moveSpeed * Time.deltaTime;
+            Vector3 movement = new Vector3(h, 0, v) * _moveSpeed * Time.deltaTime;
             Vector3 nextPosition = transform.position + movement;
 
-            // Clamp to bounds if assigned
-            if (allowedBounds != null)
+            // Clamp to pitch bounds if assigned
+            if (_allowedBounds != null)
             {
-                Bounds bounds = allowedBounds.bounds;
+                Bounds bounds = _allowedBounds.bounds;
                 nextPosition.x = Mathf.Clamp(nextPosition.x, bounds.min.x, bounds.max.x);
                 nextPosition.z = Mathf.Clamp(nextPosition.z, bounds.min.z, bounds.max.z);
-                // Keep y constant for the marker
-                nextPosition.y = transform.position.y;
+                nextPosition.y = transform.position.y; // Keep vertical height locked
             }
 
             transform.position = nextPosition;
@@ -54,7 +46,7 @@ namespace CricketSimulation
 
         public void ResetMarker()
         {
-            transform.position = startPosition;
+            transform.position = _startPosition;
         }
 
         public Vector3 GetTargetPosition()

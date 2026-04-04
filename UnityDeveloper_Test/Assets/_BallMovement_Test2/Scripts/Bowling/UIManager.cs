@@ -13,11 +13,11 @@ namespace CricketSimulation
         [SerializeField] private BowlingMeterUI _meterUI;
 
         [Header("UI Buttons")]
-        [SerializeField] private Button swingButton;
-        [SerializeField] private Button spinButton;
-        [SerializeField] private Button bowlButton;
-        [SerializeField] private Button spawnButton;
-        [SerializeField] private Button resetButton;
+        [SerializeField] private Button _swingButton;
+        [SerializeField] private Button _spinButton;
+        [SerializeField] private Button _bowlButton;
+        [SerializeField] private Button _spawnButton;
+        [SerializeField] private Button _resetButton;
 
         [Header("Selection Colors")]
         [SerializeField] private Color _activeColor = Color.green;
@@ -26,24 +26,24 @@ namespace CricketSimulation
         private void Start()
         {
             // Initializing listeners via code for a cleaner architecture
-            swingButton.onClick.AddListener(OnSwingButtonClicked);
-            spinButton.onClick.AddListener(OnSpinButtonClicked);
-            bowlButton.onClick.AddListener(OnBowlButtonClicked);
-            spawnButton.onClick.AddListener(OnSpawnToggleClicked);
+            _swingButton.onClick.AddListener(OnSwingButtonClicked);
+            _spinButton.onClick.AddListener(OnSpinButtonClicked);
+            _bowlButton.onClick.AddListener(OnBowlButtonClicked);
+            _spawnButton.onClick.AddListener(OnSpawnToggleClicked);
             
-            if (resetButton != null)
-                resetButton.onClick.AddListener(OnResetButtonClicked);
+            if (_resetButton != null)
+                _resetButton.onClick.AddListener(OnResetButtonClicked);
 
             UpdateModeUI();
         }
 
         private void UpdateModeUI()
         {
-            if (swingButton == null || spinButton == null) return;
+            if (_swingButton == null || _spinButton == null) return;
             
             bool isSwing = _bowlingManager.IsSwingMode;
-            swingButton.image.color = isSwing ? _activeColor : _inactiveColor;
-            spinButton.image.color = !isSwing ? _activeColor : _inactiveColor;
+            _swingButton.image.color = isSwing ? _activeColor : _inactiveColor;
+            _spinButton.image.color = !isSwing ? _activeColor : _inactiveColor;
         }
 
         // --- BUTTON CALLBACKS ---
